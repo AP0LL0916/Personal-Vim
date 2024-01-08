@@ -1,0 +1,120 @@
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+
+" Load an indent file for the detected file type.
+filetype indent on
+
+" Turn syntax highlighting on.
+syntax on
+
+" Highlight cursor line underneath the cursor horizontally.
+"set cursorline
+
+" Highlight cursor line underneath the cursor vertically.
+" set cursorcolumn
+
+" Add numbers to each line on the left-hand side.
+set number
+
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+
+
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set textwidth=80
+
+
+func! WordProcessorMode()
+	setlocal textwidth=80
+	setlocal smartindent
+	setlocal spell spelllang=en_us
+	setlocal noexpandtab
+endfu
+
+
+" PLUGINS ---------------------------------------------------------------- {{{
+
+" 
+call plug#begin('~/.vim/plugged')
+
+  Plug 'preservim/nerdtree'
+
+  Plug 'ChrisKempson/Tomorrow-Theme'
+
+  Plug 'dense-analysis/ale'
+
+  Plug 'preservim/nerdtree'
+
+
+call plug#end()
+" }}}
+
+
+" MAPPINGS --------------------------------------------------------------- {{{
+
+" Mappings code goes here.
+
+" }}}
+
+
+" VIMSCRIPT -------------------------------------------------------------- {{{
+
+" This will enable code folding.
+" Use the marker method of folding.
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+
+" More Vimscripts code goes here.
+
+" }}}
+
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Status bar code goes here.
+
+" }}}
+
+highlight hash ctermfg=6
+syntax match hash /.*#.*/
+
+highlight dollar ctermfg=34
+syntax match dollar /.*$.*/
+
+highlight plus ctermfg=9
+syntax match plus /.*+.*/
+
+highlight colon ctermfg=5
+syntax match colon /:.*/
+
+highlight quo ctermfg=4
+syntax match quo /".*"/
+
+highlight par ctermfg=124
+syntax match par /(.*)/
+
+highlight dash ctermfg=11
+syntax match dash /-.*/
+
+highlight normal ctermfg=231
